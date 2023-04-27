@@ -1,0 +1,56 @@
+name: project_chat_app
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  webview_flutter: ^3.0.4
+  shared_preferences: ^2.1.0
+  grouped_list: ^5.1.2
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
+
+
+  assets:
+    - images/loading_image.png
+    - images/image_drawer.png
+    - images/image_drawer_other_1.png
+    - images/image_drawer_other_2.png
+    - images/image_drawer_other_3.png
+    - images/menu_group_image.png
+    - images/menu_addfriend_image.png
+    - images/menu_qrcore_image.png
+    - images/avatar_1.bmp
+    - images/avatar_2.bmp
+    - images/avatar_3.bmp
+    - images/avatar_4.bmp
+    - images/avatar_mine.jpg
+    - images/avatar_5.bmp
+    - images/avatar_6.bmp
+    - images/drawer_background_image.png
+    - images/contact_newfriend_image.png
+    - images/contact_onlychat_image.png
+    - images/contact_groupchat_image.png
+    - images/contact_label_image.png
+    - images/contact_officialaccount_image.png
+    - images/contact_enterprise_wechat_image.png
+    - images/contact_HUST_image.png
+    -
