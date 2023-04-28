@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'search_page.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({
@@ -34,24 +35,29 @@ class MyDrawer extends StatelessWidget {
                     ),
                   ),
                 ),
-                GestureDetector(
-                  child: Expanded(
-                    child: ListView(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      children: const <Widget>[
-                        ListTile(
-                          leading: Icon(Icons.location_on),
-                          title: Text('附近的人'),
-                        ),
-                        Divider(),
-                        ListTile(
-                          leading: Icon(Icons.settings),
-                          title: Text('设置'),
-                        ),
-                      ],
-                    ),
+                Expanded(
+                  child: ListView(
+                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    children: <Widget>[
+                      ListTile(
+                          leading: const Icon(Icons.location_on),
+                          title: const Text('附近的人'),
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => SearchPage()),
+                            );
+                          }
+                      ),
+                      const Divider(),
+                      const ListTile(
+                        leading: Icon(Icons.settings),
+                        title: Text('设置'),
+                      ),
+                    ],
                   ),
                 ),
+
               ],
             ),
             Positioned(

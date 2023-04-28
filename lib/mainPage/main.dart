@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:project_chat_app/discoverPage/discover_page.dart';
 import 'package:project_chat_app/drawer&&search/search_page.dart';
 import 'package:project_chat_app/mainpage/friend_list_page.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../contacts/contacts_list_page.dart';
-import 'loading_page.dart';
+import '../loadingPage/loading_page.dart';
 import 'package:project_chat_app/mainpage/friend_list_page.dart';
 import 'package:project_chat_app/drawer&&search/my_drawer.dart';
+import 'package:project_chat_app/discoverPage/discover_page.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -15,6 +17,8 @@ void main() {
     routes: <String,WidgetBuilder>{
       "mainPage":(BuildContext context) => MainPage(),
       "/search":(BuildContext context) => SearchPage(),
+      "friendListPage":(BuildContext context) => FriendListPage(),
+      "contactListPage":(BuildContext context) => ContactPage(),
       "/pyq":(BuildContext context) => WebView(
         initialUrl: "https://wx.qq.com/",
         javascriptMode: JavascriptMode.unrestricted,
@@ -37,6 +41,12 @@ final ThemeData myDefaultTheme = ThemeData(
   primaryColor: const Color(0xffeae7e6),
   scaffoldBackgroundColor: const Color(0xffebebeb),
   cardColor: const Color(0xff393a3f),
+  appBarTheme: const AppBarTheme(
+    color:Color(0xB3E7E4EC),
+  ),
+  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    backgroundColor: Color(0xB3E7E4EC),
+  ),
 );
 
 class MainPage extends StatefulWidget {
@@ -50,9 +60,8 @@ class _MainPageState extends State<MainPage> {
   //底部导航页面路由
   final List<Widget> _pages = [
     FriendListPage(),
-    //AnimatedListRoute(),
     ContactPage(),
-    // PYQListPage(),
+    DiscoverPage(),
     // PersonalPage(),
   ];
   //顶部显示标题
@@ -65,22 +74,18 @@ class _MainPageState extends State<MainPage> {
   //底部导航按钮样式
   final List<BottomNavigationBarItem> _BNBItem = [
     const BottomNavigationBarItem(
-      backgroundColor: Colors.blue,
       icon: Icon(Icons.chat_outlined),
       label: "首页",
     ),
     const BottomNavigationBarItem(
-      backgroundColor: Colors.yellow,
       icon: Icon(Icons.group_outlined),
       label: "通讯录",
     ),
     const BottomNavigationBarItem(
-      backgroundColor: Colors.green,
       icon: Icon(Icons.widgets_outlined),
       label: "发现",
     ),
     const BottomNavigationBarItem(
-      backgroundColor: Color(0xFFFF40F5),
       icon: Icon(Icons.person_outlined),
       label: "我的",
     ),
@@ -135,6 +140,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: myDefaultTheme,
         debugShowCheckedModeBanner: false,
         home:Scaffold(
           appBar: AppBar(
@@ -162,7 +168,7 @@ class _MainPageState extends State<MainPage> {
                   onPressed: (){
                       showMenu(
                           context: context, 
-                          position: RelativeRect.fromLTRB(500.0, 76.0, 10.0, 0.0),
+                          position: const RelativeRect.fromLTRB(500.0, 76.0, 10.0, 0.0),
                           items: <PopupMenuEntry>[
                             _popupMenuItem('发起群聊',imagePath: 'images/menu_group_image.png'),
                             _popupMenuItem('添加好友',imagePath: 'images/menu_addfriend_image.png'),
@@ -178,7 +184,7 @@ class _MainPageState extends State<MainPage> {
           bottomNavigationBar: BottomNavigationBar(
             items: _BNBItem,
             currentIndex: _currentIndex,
-            type: BottomNavigationBarType.shifting,
+            type: BottomNavigationBarType.fixed,
             onTap: (index){
               _changePage(index);
             },

@@ -118,7 +118,7 @@ class _SearchPageState extends State<SearchPage> {
                 children: <Widget>[
                   _getText('小程序'),
                   _getText('视频号'),
-                  _getText('表情'),
+                  _getText('附近的人'),
                 ],
               ),
             ),
