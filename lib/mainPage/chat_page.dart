@@ -10,6 +10,7 @@ class ChatMessage {
 
 class ChatPage extends StatefulWidget {
   final String friendName;
+
   //将用户头像图片地址传入（待实现！！！）
   //final String avatarURL;
 
@@ -42,13 +43,14 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   void _saveMessages() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();  //获取实例
-    List<String> messages = _messages.map((m) => m.message).toList(); //将消息转化为字符列表
+    SharedPreferences prefs = await SharedPreferences.getInstance(); //获取实例
+    List<String> messages =
+        _messages.map((m) => m.message).toList(); //将消息转化为字符列表
     prefs.setStringList(widget.friendName, messages); //保存字符列表
   }
 
   void _addMessage(String text) {
-    if(text.isNotEmpty) {
+    if (text.isNotEmpty) {
       setState(() {
         _messages.add(ChatMessage(message: text, sender: 'Me'));
         _controller.clear();
@@ -105,33 +107,38 @@ class _ChatPageState extends State<ChatPage> {
                 ChatMessage message = _messages[index];
                 return GestureDetector(
                   onLongPress: () => _showDeleteDialog(index),
-                  child: Container(
-                    padding: const EdgeInsets.all(8.0),
-                    alignment: /*isMe ?*/
-                        Alignment.centerRight /*: Alignment.centerLeft*/,
+                  child: IntrinsicWidth(
                     child: Container(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                      decoration: const BoxDecoration(
-                        color: /*isMe ? */
-                            Colors.blue /* : Colors.grey.shade300*/,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                          bottomLeft: /*isMe ?*/
-                              Radius.circular(20) /* : Radius.circular(0)*/,
-                          bottomRight: /* isMe ? */
-                              Radius.circular(0) /* : Radius.circular(20)*/,
+                      padding: const EdgeInsets.all(8.0),
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        alignment: Alignment.centerRight,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[400],
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20),
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(0),
+                          ),
                         ),
-                      ),
-                      child: ListTile(
-                        title: Text(
-                          message.message,
-                          style: const TextStyle(color: Colors.white),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListTile(
+                            title: Text(
+                              message.message,
+                              textAlign: TextAlign.start,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 17,
+                              ),
+                            ),
+                            trailing: CircleAvatar(
+                              child: Image.asset('images/avatar_mine.jpg'),
+                            ),
+                          ),
                         ),
-                        trailing: CircleAvatar(
-                          child: Image.asset('images/avatar_mine.jpg'),
-                        ),
+
                       ),
                     ),
                   ),
@@ -159,7 +166,7 @@ class _ChatPageState extends State<ChatPage> {
                       keyboardType: TextInputType.multiline,
                       textInputAction: TextInputAction.newline,
                       decoration: const InputDecoration(
-                        hintText: 'Type a message...',
+                        hintText: '输入消息...',
                         border: InputBorder.none,
                       ),
                     ),
@@ -168,8 +175,16 @@ class _ChatPageState extends State<ChatPage> {
                     onPressed: () {
                       _addMessage(_controller.text);
                     },
-                    label: const Text("Send"),
-                    icon: const Icon(Icons.send),
+                    label: const Text(
+                      "发送",
+                      style: TextStyle(
+                        color: Color(0xff393a3f),
+                      ),
+                    ),
+                    icon: const Icon(
+                      Icons.send,
+                      color: Color(0xff393a3f),
+                    ),
                   ),
                 ],
               ),

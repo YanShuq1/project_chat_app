@@ -20,7 +20,7 @@ class AccountCard extends StatelessWidget {
       ),
       subtitle: const Padding(
         padding: EdgeInsets.only(left: 40.0),
-        child: Text('账号'+'Y15767792195'),
+        child: Text('账号: ''Y15767792195'),
       ),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,

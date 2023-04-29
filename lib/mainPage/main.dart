@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:project_chat_app/discoverPage/discover_page.dart';
+import 'package:project_chat_app/discoverPage/pyq_page.dart';
 import 'package:project_chat_app/drawer&&search/search_page.dart';
 import 'package:project_chat_app/mainpage/friend_list_page.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../contacts/contacts_list_page.dart';
 import '../loadingPage/loading_page.dart';
-import 'package:project_chat_app/mainpage/friend_list_page.dart';
 import 'package:project_chat_app/drawer&&search/my_drawer.dart';
-import 'package:project_chat_app/discoverPage/discover_page.dart';
 
 import '../personal/personal_page.dart';
 
@@ -17,25 +16,13 @@ void main() {
     title: 'chatAPP',
     theme: myDefaultTheme,
     routes: <String,WidgetBuilder>{
-      "mainPage":(BuildContext context) => MainPage(),
+      "mainPage":(BuildContext context) => const MainPage(),
       "/search":(BuildContext context) => SearchPage(),
       "friendListPage":(BuildContext context) => FriendListPage(),
-      "contactListPage":(BuildContext context) => ContactPage(),
-      "/pyq":(BuildContext context) => WebView(
-        initialUrl: "https://wx.qq.com/",
-        javascriptMode: JavascriptMode.unrestricted,
-        onPageStarted: (String url){
-          print("onPageStarted $url");
-        },
-        onPageFinished: (String url){
-          print("onPageFinished $url");
-        },
-        onWebResourceError: (error){
-          print("${error.description}");
-        },
-      ),
+      "contactListPage":(BuildContext context) => const ContactPage(),
+      "/pyq":(BuildContext context) => PYQPage(),
     },
-    home: LoadingPage(),
+    home: const LoadingPage(),
   ));
 }
 //默认主题
@@ -182,7 +169,7 @@ class _MainPageState extends State<MainPage> {
                 icon: const Icon(Icons.add))],
           ),
           body: _pages[_currentIndex],
-          drawer: MyDrawer(),
+          drawer: const MyDrawer(),
           bottomNavigationBar: BottomNavigationBar(
             items: _BNBItem,
             currentIndex: _currentIndex,

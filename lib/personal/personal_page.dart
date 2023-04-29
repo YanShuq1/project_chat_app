@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:project_chat_app/drawer&&search/my_drawer.dart';
 import 'package:project_chat_app/personal/account_card_of_personal_page.dart';
 
 class PersonalPage extends StatelessWidget {
   PersonalPage();
 
-  final List<Map<String , Icon>> _iconOfPersonalPage = [
+  final List<Map<String , Icon>> _iconOfPersonalPage = const[
     {"Icon":Icon(Icons.payment_outlined)},
     {"Icon":Icon(Icons.star_border_outlined)},
     {"Icon":Icon(Icons.camera_outlined)},

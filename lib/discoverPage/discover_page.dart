@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:project_chat_app/discoverPage/pyq_page.dart';
+import 'package:project_chat_app/mainPage/main.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class DiscoverPage extends StatelessWidget {
 
   DiscoverPage();
 
-  final List<Map<String,Icon>> _iconOfDiscoverPage =[
+  final List<Map<String,Icon>> _iconOfDiscoverPage =const[
     {"Icon":Icon(Icons.ondemand_video_outlined)},
     {"Icon":Icon(Icons.video_call_outlined)},
     {"Icon":Icon(Icons.filter_center_focus_outlined)},
@@ -51,19 +54,22 @@ class DiscoverPage extends StatelessWidget {
       },
       itemBuilder: (BuildContext context, int index) {
         if(index == 0) {
-          return const ListTile(
-              leading: CircleAvatar(
+          return ListTile(
+              leading: const CircleAvatar(
                 backgroundColor: Colors.transparent,
                 child: Icon(Icons.camera_outlined),
               ),
-              title: Text("朋友圈"),
+              title: const Text("朋友圈"),
+            onTap: (){
+                Navigator.of(context).push(PYQPage() as Route<Object?>);
+            },
           );
         }
         else{
           return ListTile(
             leading: CircleAvatar(
-              child: _iconOfDiscoverPage[index-1]["Icon"],
               backgroundColor: Colors.transparent,
+              child: _iconOfDiscoverPage[index-1]["Icon"],
             ),
             title: Text(_titleOfDiscoverPage[index-1]["Title"]!),
           );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
-import 'package:project_chat_app/mainpage/friend_list_page.dart';
 import '../mainpage/chat_page.dart';
 
 class ContactPage extends StatefulWidget {
