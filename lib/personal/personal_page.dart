@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_chat_app/drawer&&search/my_drawer.dart';
 import 'package:project_chat_app/personal/account_card_of_personal_page.dart';
 
 class PersonalPage extends StatelessWidget {
@@ -20,6 +21,15 @@ class PersonalPage extends StatelessWidget {
     {"Title":"卡包"},
     {"Title":"表情"},
     {"Title":"设置"},
+  ];
+
+  final List<Map< String ,void Function(BuildContext context)>> _callbackOfPersonalPage = [
+    {"CallBack":(BuildContext context){Navigator.of(context).pushReplacementNamed("search");}},
+    {"CallBack":(BuildContext context){Navigator.of(context).pushReplacementNamed("search");}},
+    {"CallBack":(BuildContext context){Navigator.of(context).pushReplacementNamed("pyq");}},
+    {"CallBack":(BuildContext context){Scaffold.of(context).openDrawer();}},
+    {"CallBack":(BuildContext context){Navigator.of(context).pushReplacementNamed("search");}},
+    {"CallBack":(BuildContext context){Scaffold.of(context).openDrawer();}},
   ];
 
   @override
@@ -51,6 +61,7 @@ class PersonalPage extends StatelessWidget {
               child: _iconOfPersonalPage[index-1]["Icon"],
             ),
             title: Text(_titleOfPersonalPage[index-1]["Title"].toString()),
+            onTap: () => _callbackOfPersonalPage[index-1]["CallBack"]?.call(context),
           );
         }
       },

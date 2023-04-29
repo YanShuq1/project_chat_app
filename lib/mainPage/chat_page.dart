@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:bubble/bubble.dart';
 
 class ChatMessage {
   String message;
@@ -32,7 +33,7 @@ class _ChatPageState extends State<ChatPage> {
 
   void _loadMessages() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String>? messages = prefs.getStringList(widget.friendName);
+    List<String>? messages = prefs.getStringList(widget.friendName);  //括号内是存储时的key
     if (messages != null) {
       setState(() {
         _messages = messages
@@ -107,40 +108,34 @@ class _ChatPageState extends State<ChatPage> {
                 ChatMessage message = _messages[index];
                 return GestureDetector(
                   onLongPress: () => _showDeleteDialog(index),
-                  child: IntrinsicWidth(
-                    child: Container(
-                      padding: const EdgeInsets.all(8.0),
-                      alignment: Alignment.centerRight,
-                      child: Container(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Bubble(
+                        margin: const BubbleEdges.all(10.0),
+                        color: Colors.grey[400],
+                        // nip: message.isMine ? BubbleNip.rightBottom : BubbleNip.leftBottom,
+                        // alignment: message.isMine ? Alignment.centerRight : Alignment.centerLeft,
+                        nip: BubbleNip.rightCenter,
                         alignment: Alignment.centerRight,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[400],
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(0),
-                          ),
-                        ),
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ListTile(
-                            title: Text(
-                              message.message,
-                              textAlign: TextAlign.start,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 17,
-                              ),
-                            ),
-                            trailing: CircleAvatar(
-                              child: Image.asset('images/avatar_mine.jpg'),
+                          padding: const EdgeInsets.all(9.0),
+                          child: Text(
+                            message.message,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 17,
                             ),
                           ),
                         ),
-
                       ),
-                    ),
+                      CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        radius: 23,
+                        child: Image.asset("images/avatar_mine.jpg"),
+                      ),
+                    ],
                   ),
                 );
               },

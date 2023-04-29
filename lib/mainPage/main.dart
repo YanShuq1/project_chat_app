@@ -17,10 +17,11 @@ void main() {
     theme: myDefaultTheme,
     routes: <String,WidgetBuilder>{
       "mainPage":(BuildContext context) => const MainPage(),
-      "/search":(BuildContext context) => SearchPage(),
+      "search":(BuildContext context) => SearchPage(),
       "friendListPage":(BuildContext context) => FriendListPage(),
       "contactListPage":(BuildContext context) => const ContactPage(),
-      "/pyq":(BuildContext context) => PYQPage(),
+      "pyq":(BuildContext context) => const PYQPage(),
+      "discoverPage":(BuildContext context) => DiscoverPage(),
     },
     home: const LoadingPage(),
   ));
@@ -149,7 +150,7 @@ class _MainPageState extends State<MainPage> {
               IconButton(
                   //跳转搜索页面
                   onPressed: (){
-                    Navigator.of(context).pushReplacementNamed("/search");
+                    Navigator.of(context).pushReplacementNamed("search");
                   },
                   icon: const Icon(Icons.search)),
               IconButton(

@@ -40,7 +40,7 @@ class MyDrawer extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 10.0),
                     children: <Widget>[
                       ListTile(
-                          leading: const Icon(Icons.location_on),
+                          leading: const Icon(Icons.location_on_outlined),
                           title: const Text('附近的人'),
                           onTap: (){
                             Navigator.push(
@@ -49,10 +49,23 @@ class MyDrawer extends StatelessWidget {
                             );
                           }
                       ),
-                      const Divider(),
-                      const ListTile(
-                        leading: Icon(Icons.settings),
-                        title: Text('设置'),
+                      Divider(
+                        thickness: 2,
+                        color: Colors.grey[300],
+                      ),
+                      ListTile(
+                        leading: const Icon(Icons.wallet_outlined),
+                        title: const Text('卡包'),
+                        onTap: (){},
+                      ),
+                      Divider(
+                        thickness: 2,
+                        color: Colors.grey[300],
+                      ),
+                      ListTile(
+                        leading: const Icon(Icons.settings_outlined),
+                        title: const Text('设置'),
+                        onTap: (){},
                       ),
                     ],
                   ),
