@@ -9,6 +9,8 @@ import 'package:project_chat_app/mainpage/friend_list_page.dart';
 import 'package:project_chat_app/drawer&&search/my_drawer.dart';
 import 'package:project_chat_app/discoverPage/discover_page.dart';
 
+import '../personal/personal_page.dart';
+
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -62,7 +64,7 @@ class _MainPageState extends State<MainPage> {
     FriendListPage(),
     ContactPage(),
     DiscoverPage(),
-    // PersonalPage(),
+    PersonalPage(),
   ];
   //顶部显示标题
   final List<String> _pageTitle = [
