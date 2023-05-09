@@ -135,6 +135,7 @@ class _ChatPageState extends State<ChatPage> {
                         radius: 23,
                         child: Image.asset("images/avatar_mine.jpg"),
                       ),
+                      const SizedBox(width: 12,),
                     ],
                   ),
                 );

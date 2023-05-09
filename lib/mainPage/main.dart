@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:project_chat_app/discoverPage/discover_page.dart';
 import 'package:project_chat_app/discoverPage/pyq_page.dart';
 import 'package:project_chat_app/drawer&&search/search_page.dart';
-import 'package:project_chat_app/mainpage/friend_list_page.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:project_chat_app/mainPage/friend_list_page.dart';
+// import 'package:webview_flutter/webview_flutter.dart';
 import '../contacts/contacts_list_page.dart';
 import '../loadingPage/loading_page.dart';
 import 'package:project_chat_app/drawer&&search/my_drawer.dart';
@@ -37,6 +37,9 @@ final ThemeData myDefaultTheme = ThemeData(
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: Color(0xB3E7E4EC),
   ),
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: Color(0xFF91CE9F),
+  ),
 );
 
 class MainPage extends StatefulWidget {
@@ -50,7 +53,7 @@ class _MainPageState extends State<MainPage> {
   //底部导航页面路由
   final List<Widget> _pages = [
     FriendListPage(),
-    ContactPage(),
+    const ContactPage(),
     DiscoverPage(),
     PersonalPage(),
   ];

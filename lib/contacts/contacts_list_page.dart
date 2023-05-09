@@ -1,29 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
 import '../mainpage/chat_page.dart';
+import '../mainPage/friend_list_page.dart';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({Key? key}) : super(key: key);
 
   @override
   _ContactPageState createState() => _ContactPageState();
+
+
 }
 
 
 //通讯录页面好友列表
-final List<Map<String, String>> contactListPageList = [
-  //联系人索引
-  {"name": "却之", "avatar": "images/avatar_1.bmp", "initial": "Q"},
-  {"name": "啊哈", "avatar": "images/avatar_2.bmp", "initial": "A"},
-  {"name": "逃跑的Viiiiic", "avatar": "images/avatar_3.bmp", "initial": "T"},
-  {"name": "我彻底失败", "avatar": "images/avatar_4.bmp", "initial": "W"},
-  {"name": "願ねが", "avatar": "images/avatar_5.bmp", "initial": "Y"},
-  {"name": "拾壹點半呼呼大睡", "avatar": "images/avatar_6.bmp", "initial": "S"},
-  {"name": "顏書齊", "avatar": "images/avatar_mine.jpg", "initial": "Y"},
-];
+  List<Map<String, String>> contactListPageList =[];
+
+//   //联系人索引
+//   {"name": "却之", "avatar": "images/avatar_1.bmp", "initial": "Q"},
+//   {"name": "啊哈", "avatar": "images/avatar_2.bmp", "initial": "A"},
+//   {"name": "逃跑的Viiiiic", "avatar": "images/avatar_3.bmp", "initial": "T"},
+//   {"name": "我彻底失败", "avatar": "images/avatar_4.bmp", "initial": "W"},
+//   {"name": "願ねが", "avatar": "images/avatar_5.bmp", "initial": "Y"},
+//   {"name": "拾壹點半呼呼大睡", "avatar": "images/avatar_6.bmp", "initial": "S"},
+//   {"name": "顏書齊", "avatar": "images/avatar_mine.jpg", "initial": "Y"},
+// ];
+
 
 
 class _ContactPageState extends State<ContactPage> {
+
+  @override
+  void initState() {
+    super.initState();
+    loadContactList();
+  }
+
 
   @override
   Widget build(BuildContext context) {

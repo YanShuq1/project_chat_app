@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:project_chat_app/mainPage/friend_list_page.dart';
+
 class LoadingPage extends StatefulWidget {
   const LoadingPage({super.key});
 
@@ -13,8 +15,10 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   void initState() {
     super.initState();
+    loadContactList();
+    // print(contactListPageList);
     Future.delayed(const Duration(seconds: 2),(){
-      print("chatAPP启动...");
+      // print("chatAPP启动...");
       Navigator.of(context).pushReplacementNamed("mainPage");
     });
   }

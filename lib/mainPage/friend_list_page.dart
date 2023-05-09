@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_chat_app/contacts/contacts_list_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'chat_page.dart';
+import 'dart:convert';
 
 class Friend {
   String name;
@@ -9,17 +11,52 @@ class Friend {
   Friend({required this.name, required this.avatar});
 }
 
-// List<Friend> friendListPageList = [
-//   Friend(name: '却之', avatar: 'images/avatar_1.bmp'),
-//   Friend(name: '啊哈', avatar: 'images/avatar_2.bmp'),
-//   Friend(name: '逃跑的Viiiiic', avatar: 'images/avatar_3.bmp'),
-//   Friend(name: '我彻底失败', avatar: 'images/avatar_4.bmp'),
-//   Friend(name: '願ねが', avatar: 'images/avatar_5.bmp'),
-//   Friend(name: '拾壹點半呼呼大睡', avatar: 'images/avatar_6.bmp'),
-//   Friend(name: '顏書齊', avatar: 'images/avatar_mine.jpg'),
+// //通讯录页面好友列表
+//List<Map<String, String>> contactListPageList = [];
+//   //联系人索引
+//   {"name": "却之", "avatar": "images/avatar_1.bmp", "initial": "Q"},
+//   {"name": "啊哈", "avatar": "images/avatar_2.bmp", "initial": "A"},
+//   {"name": "逃跑的Viiiiic", "avatar": "images/avatar_3.bmp", "initial": "T"},
+//   {"name": "我彻底失败", "avatar": "images/avatar_4.bmp", "initial": "W"},
+//   {"name": "願ねが", "avatar": "images/avatar_5.bmp", "initial": "Y"},
+//   {"name": "拾壹點半呼呼大睡", "avatar": "images/avatar_6.bmp", "initial": "S"},
+//   {"name": "顏書齊", "avatar": "images/avatar_mine.jpg", "initial": "Y"},
 // ];
 
+//将List<Map<String,String>>类型通过json转成List<String>类型
+List<String> constListToJsonList(List<Map<String,String>> originalList){
+  List<String> resultList = [];
+  for(var map in originalList){
+    String jsonString = json.encode(map);
+    resultList.add(jsonString);
+  }
+  return resultList;
+}
+//将转换后的List<String>类型转回原本的List<Map<String,String>>类型
+List<Map<String,String>> toOriginalList(List<String> jsonList){
+  List<Map<String,String>> resultList = [];
+  for(var jsonString in jsonList){
+    Map<String,dynamic> map = json.decode(jsonString);
+    Map<String,String> originalMap = map.cast<String,String>();
+    resultList.add(originalMap);
+  }
+  return resultList;
+}
+
+void saveContactList() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance(); //获取实例
+  List<String> saveList = constListToJsonList(contactListPageList);
+  await prefs.setStringList("contactsList", saveList);
+}
+
+void loadContactList() async{
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  List<String> loadList = prefs.getStringList("contactsList") ?? [];
+  contactListPageList = toOriginalList(loadList);
+}
+
 class FriendListPage extends StatefulWidget {
+
 
   @override
   _FriendListPageState createState() => _FriendListPageState();
@@ -27,6 +64,11 @@ class FriendListPage extends StatefulWidget {
 
 class _FriendListPageState extends State<FriendListPage> {
 
+  @override
+  void initState() {
+    super.initState();
+    loadContactList();
+  }
 
   void addFriend() async {
     TextEditingController nameController = TextEditingController();
@@ -69,11 +111,11 @@ class _FriendListPageState extends State<FriendListPage> {
                   child: const Text('取消')),
               TextButton(
                   onPressed: () {
-                    var mode = 0;
+                    bool mode = true;
                     for(var element in contactListPageList){
                       if(nameController.text == element["name"] &&
                           avatarController.text == element["avatar"]) {
-                        mode = 1;
+                        mode = false;
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -93,13 +135,16 @@ class _FriendListPageState extends State<FriendListPage> {
                         );
                       }
                     }
-                    if(mode == 0) {
+                    if(mode == true) {
                       contactListPageList.add(
                           {"name": nameController.text,
                             "avatar": avatarController.text,
                             "initial": initialController.text});
                       Navigator.pop(context);
-                      setState(() {});
+                      setState(() {
+                        saveContactList();
+                        loadContactList();
+                      });
                     }
                   },
                   child: const Text('添加')),
@@ -155,7 +200,10 @@ class _FriendListPageState extends State<FriendListPage> {
                     contactListPageList[index]["avatar"] = avatarController.text;
                     contactListPageList[index]["initial"] = initialController.text;
                     Navigator.pop(context);
-                    setState(() {});
+                    setState(() {
+                      saveContactList();
+                      loadContactList();
+                    });
                   },
                   child: const Text('保存'),
               ),
@@ -166,8 +214,13 @@ class _FriendListPageState extends State<FriendListPage> {
 
   void deleteFriend(int index) {
     contactListPageList.removeAt(index);
-    setState(() {});
+
+    setState(() {
+      saveContactList();
+      loadContactList();
+    });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -240,3 +293,4 @@ class _FriendListPageState extends State<FriendListPage> {
     );
   }
 }
+
