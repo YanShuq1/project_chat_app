@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_chat_app/discoverPage/pyq_page.dart';
-import 'package:project_chat_app/mainPage/main.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+// import 'package:project_chat_app/mainPage/main.dart';
+// import 'package:webview_flutter/webview_flutter.dart';
 
 class DiscoverPage extends StatelessWidget {
 

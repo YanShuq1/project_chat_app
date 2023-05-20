@@ -16,7 +16,6 @@ class _LoadingPageState extends State<LoadingPage> {
   void initState() {
     super.initState();
     loadContactList();
-    // print(contactListPageList);
     Future.delayed(const Duration(seconds: 2),(){
       // print("chatAPP启动...");
       Navigator.of(context).pushReplacementNamed("mainPage");

@@ -14,6 +14,7 @@ class ChatPage extends StatefulWidget {
 
   //将用户头像图片地址传入（待实现！！！）
   //final String avatarURL;
+  //imagepicker  让我挺过考试月先orz
 
   ChatPage({required this.friendName});
 

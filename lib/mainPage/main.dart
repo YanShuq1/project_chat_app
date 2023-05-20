@@ -37,7 +37,7 @@ final ThemeData myDefaultTheme = ThemeData(
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: Color(0xB3E7E4EC),
   ),
-  floatingActionButtonTheme: FloatingActionButtonThemeData(
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: Color(0xFF91CE9F),
   ),
 );
@@ -173,7 +173,7 @@ class _MainPageState extends State<MainPage> {
                 icon: const Icon(Icons.add))],
           ),
           body: _pages[_currentIndex],
-          drawer: const MyDrawer(),
+          drawer: MyDrawer(),
           bottomNavigationBar: BottomNavigationBar(
             items: _BNBItem,
             currentIndex: _currentIndex,

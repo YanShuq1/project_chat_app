@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'search_page.dart';
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({
+  MyDrawer({
     Key? key,
   }) : super(key: key);
+
+  String version = "1.0.0";
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class MyDrawer extends StatelessWidget {
                   ],
                   arrowColor: Colors.red,
                   onDetailsPressed: () {
-                    print(1);
+                    // print(1);
                   },
                   decoration: const BoxDecoration(
                     image: DecorationImage(
@@ -72,6 +74,24 @@ class MyDrawer extends StatelessWidget {
                 ),
 
               ],
+            ),
+            Positioned(
+                bottom: 10,
+                left: 10,
+                child: InkWell(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        "版本号：$version",
+                        style: TextStyle(
+                          color: Colors.grey[700]
+                        ),
+                      ),
+                    ],
+                  ),
+                )
             ),
             Positioned(
                 bottom: 10,

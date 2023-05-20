@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project_chat_app/drawer&&search/my_drawer.dart';
 import 'package:project_chat_app/personal/account_card_of_personal_page.dart';
 
 class PersonalPage extends StatelessWidget {
