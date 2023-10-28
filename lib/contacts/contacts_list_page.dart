@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
 import '../mainpage/chat_page.dart';
@@ -41,7 +43,6 @@ class _ContactPageState extends State<ContactPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GroupedListView<Map<String, String>, String>(
-            //引用第三方插件来实现通讯录中的排序，功能仍不如微信的完整
             elements: contactListPageList,
             groupBy: (contact) => contact['initial']!,
             groupComparator: (initial1, initial2) => initial1.compareTo(initial2),
@@ -52,35 +53,36 @@ class _ContactPageState extends State<ContactPage> {
             floatingHeader: true,
             groupSeparatorBuilder: (initial) => Container(
               padding: const EdgeInsets.symmetric(horizontal: 25),
-              color: Colors.grey[300],
+              color: const Color(0xF0FFF0F0),
               child: Row(
                 children: [
                   Expanded(
                     child: Text(
                       initial,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontWeight: FontWeight.w300 ),
                     ),
                   ),
                 ],
               ),
             ),
-            itemBuilder: (context, contact) => InkWell(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ChatPage(
-                    friendName: contact['name']!,
-                  ),
-                ),
-              ),
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: AssetImage(contact['avatar']!),
-                ),
-                title: Text(contact['name']!),
+        itemBuilder: (context, contact) => InkWell(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ChatPage(
+                friendName: contact['name']!,
               ),
             ),
           ),
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundImage: Image.file(File(contact['avatar']!)).image,
+            ),
+            title: Text(contact['name']!),
+          ),
+        ),
+
+      ),
     );
   }
 }

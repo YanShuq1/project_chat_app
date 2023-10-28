@@ -1,4 +1,4 @@
-name: project_chat_app
+name: ChatApp
 description: A new Flutter project.
 
 publish_to: 'none'
@@ -15,6 +15,10 @@ dependencies:
   shared_preferences: ^2.1.0
   grouped_list: ^5.1.2
   bubble: ^1.2.0
+  image_picker: ^1.0.4
+  path_provider: ^2.1.1
+
+  lpinyin: ^2.0.3
 
   cupertino_icons: ^1.0.2
 
@@ -39,13 +43,6 @@ flutter:
     - images/menu_group_image.png
     - images/menu_addfriend_image.png
     - images/menu_qrcore_image.png
-    - images/avatar_1.bmp
-    - images/avatar_2.bmp
-    - images/avatar_3.bmp
-    - images/avatar_4.bmp
-    - images/avatar_mine.jpg
-    - images/avatar_5.bmp
-    - images/avatar_6.bmp
     - images/drawer_background_image.png
     - images/contact_newfriend_image.png
     - images/contact_onlychat_image.png
@@ -54,4 +51,3 @@ flutter:
     - images/contact_officialaccount_image.png
     - images/contact_enterprise_wechat_image.png
     - images/contact_HUST_image.png
-    -

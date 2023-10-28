@@ -2,7 +2,7 @@
     package="com.example.project_chat_app">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="project_chat_app"
+        android:label="ChatApp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:networkSecurityConfig="@xml/network_security_config">
@@ -13,6 +13,7 @@
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
             android:windowSoftInputMode="adjustResize">
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user

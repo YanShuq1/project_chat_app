@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:project_chat_app/personal/account_card_of_personal_page.dart';
+
+import 'account_card_of_personal_page.dart';
+
 
 class PersonalPage extends StatelessWidget {
-  PersonalPage();
+  PersonalPage({super.key});
 
   final List<Map<String , Icon>> _iconOfPersonalPage = const[
     {"Icon":Icon(Icons.payment_outlined)},

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'search_page.dart';
 
 class MyDrawer extends StatelessWidget {
-  MyDrawer({
-    Key? key,
-  }) : super(key: key);
 
-  String version = "1.0.0";
+
+  final String version = "1.0.0";
+
+  const MyDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,8 @@ class MyDrawer extends StatelessWidget {
             Column(
               children: <Widget>[
                 UserAccountsDrawerHeader(
-                  accountName: const Text('卑微的yjj'),
-                  accountEmail: const Text('1993783308@qq.com'),
+                  accountName: const Text('CS2201 叶俊江',style: TextStyle(color: Colors.white),),
+                  accountEmail: const Text('1993783308@qq.com',style: TextStyle(color: Colors.white),),
                   currentAccountPicture: const CircleAvatar(
                     backgroundImage: AssetImage('images/image_drawer.png'),),
                   otherAccountsPictures: const <Widget>[

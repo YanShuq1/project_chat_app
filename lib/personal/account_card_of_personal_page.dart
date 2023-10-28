@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AccountCard extends StatelessWidget {
-  const AccountCard();
+  const AccountCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,9 @@ class AccountCard extends StatelessWidget {
         padding: EdgeInsets.only(left: 40.0),
         child: Text('账号: ''Y15767792195'),
       ),
-      trailing: Row(
+      trailing: const Row(
         mainAxisSize: MainAxisSize.min,
-        children: const [
+        children: [
           Icon(Icons.qr_code_2_outlined),
           Icon(Icons.chevron_right_outlined),
         ],

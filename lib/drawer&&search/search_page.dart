@@ -1,7 +1,10 @@
+import 'package:ChatApp/common/touch_callback.dart';
 import 'package:flutter/material.dart';
-import 'package:project_chat_app/common/touch_callback.dart';
+
 
 class SearchPage extends StatefulWidget {
+  const SearchPage({super.key});
+
   @override
   State<SearchPage> createState() => _SearchPageState();
 }
@@ -18,7 +21,7 @@ class _SearchPageState extends State<SearchPage> {
   //获取文本
   _getText(String text) {
     return TouchCallBack(
-      isfeed: false,
+      isFeed: false,
       onPressed: () {},
       child: Text(
         text,
@@ -40,7 +43,7 @@ class _SearchPageState extends State<SearchPage> {
           children: <Widget>[
             Stack(children: <Widget>[
               TouchCallBack(
-                isfeed: false,
+                isFeed: false,
                 onPressed: () {
                   Navigator.popAndPushNamed(context, "mainPage");
                 },

@@ -1,7 +1,8 @@
+import 'package:ChatApp/mainPage/friend_list_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:project_chat_app/mainPage/friend_list_page.dart';
+
 
 class LoadingPage extends StatefulWidget {
   const LoadingPage({super.key});

@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# PivotStudio_practice_project
+# Practice_project
 =======
 # project_chat_app
 

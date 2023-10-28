@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:project_chat_app/discoverPage/pyq_page.dart';
+import 'pyq_page.dart';
 // import 'package:project_chat_app/mainPage/main.dart';
 // import 'package:webview_flutter/webview_flutter.dart';
 
 class DiscoverPage extends StatelessWidget {
 
-  DiscoverPage();
+  DiscoverPage({super.key});
 
   final List<Map<String,Icon>> _iconOfDiscoverPage =const[
-    {"Icon":Icon(Icons.ondemand_video_outlined)},
-    {"Icon":Icon(Icons.video_call_outlined)},
-    {"Icon":Icon(Icons.filter_center_focus_outlined)},
-    {"Icon":Icon(Icons.style_outlined)},
-    {"Icon":Icon(Icons.stay_current_landscape_outlined)},
-    {"Icon":Icon(Icons.search_outlined)},
-    {"Icon":Icon(Icons.accessibility_new_outlined)},
-    {"Icon":Icon(Icons.shopping_cart_outlined)},
-    {"Icon":Icon(Icons.games_outlined)},
-    {"Icon":Icon(Icons.apps_outlined)},
+    {"Icon":Icon(Icons.ondemand_video_outlined, color:Color(0xECB3E7E4))},
+    {"Icon":Icon(Icons.video_call_outlined, color:Color(0xECB3E7E4))},
+    {"Icon":Icon(Icons.filter_center_focus_outlined, color:Color(0xECB3E7E4))},
+    {"Icon":Icon(Icons.style_outlined, color:Color(0xECB3E7E4))},
+    {"Icon":Icon(Icons.stay_current_landscape_outlined, color:Color(0xECB3E7E4))},
+    {"Icon":Icon(Icons.search_outlined, color:Color(0xECB3E7E4))},
+    {"Icon":Icon(Icons.accessibility_new_outlined, color:Color(0xECB3E7E4))},
+    {"Icon":Icon(Icons.shopping_cart_outlined, color:Color(0xECB3E7E4))},
+    {"Icon":Icon(Icons.games_outlined, color:Color(0xECB3E7E4))},
+    {"Icon":Icon(Icons.apps_outlined, color:Color(0xECB3E7E4))},
   ];
 
   final List<Map<String , String>> _titleOfDiscoverPage =[
@@ -57,11 +57,14 @@ class DiscoverPage extends StatelessWidget {
           return ListTile(
               leading: const CircleAvatar(
                 backgroundColor: Colors.transparent,
-                child: Icon(Icons.camera_outlined),
+                child: Icon(Icons.camera_outlined,color: Color(0xECB3E7E4),),
               ),
-              title: const Text("朋友圈"),
+              title: const Text("QQ空间"),
             onTap: (){
-                Navigator.of(context).push(PYQPage() as Route<Object?>);
+                Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const PYQPage(),
+            ));
+
             },
           );
         }
